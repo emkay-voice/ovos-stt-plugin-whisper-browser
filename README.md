@@ -47,6 +47,11 @@ emkayWhisper.transcribe(pcm16, rate, lang, model) // Promise<string>
 }
 ```
 
+While the model downloads the first time, the plugin fails so
+`fallback_module` hears you. With `"wait_for_download": true` it waits for the
+model instead; for when there is no network to fall back on (Emkay's "local
+only" mode sets it).
+
 The model follows the language, as Piper's voice does: a language with a
 model of its own that does better uses that one (`MODELS`), every other
 language the multilingual `onnx-community/whisper-base`.

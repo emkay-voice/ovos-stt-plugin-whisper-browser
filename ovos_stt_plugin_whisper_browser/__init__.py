@@ -74,8 +74,10 @@ class WhisperBrowserSTT(STT):
         if lang not in LANGUAGES:
             raise ValueError(f"Whisper does not know the language {language}")
         model = self.model or model_for(lang)
-        if not run_sync(js.emkayWhisper.ready(model)):
-            # loading now; the host's stt.fallback_module hears this one
+        if not run_sync(js.emkayWhisper.ready(model)) and not self.config.get("wait_for_download"):
+            # loading now; the host's stt.fallback_module hears this one.
+            # With "wait_for_download" (no network to fall back on, e.g.
+            # Emkay's local only mode) transcribe() below waits for the model.
             raise RuntimeError(f"the Whisper model {model} is still downloading")
         pcm = audio.get_raw_data(convert_rate=None, convert_width=2)
         text = run_sync(js.emkayWhisper.transcribe(to_js(pcm), audio.sample_rate, lang, model))
