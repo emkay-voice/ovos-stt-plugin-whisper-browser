@@ -51,9 +51,9 @@ emkayWhisper.transcribe(pcm16, rate, lang, model) // Promise<string>
 
 | model | download | notes |
 |---|---|---|
-| `onnx-community/whisper-tiny` | ~120 MB | fastest; fine for English |
+| `onnx-community/whisper-tiny` | ~65 MB | fastest; fine for English |
 | `onnx-community/whisper-base` | ~140 MB | default; good English, Danish so-so |
-| `onnx-community/whisper-small` | ~420 MB | better for languages other than English, slower |
+| `onnx-community/whisper-small` | ~510 MB | better for languages other than English, slower |
 
 (The encoder is kept at full precision, since it loses too much at 8 bit;
 the decoder is 8-bit.)
