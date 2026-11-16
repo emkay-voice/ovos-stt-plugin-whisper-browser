@@ -40,8 +40,13 @@ def audio(seconds=1.0, rate=16000):
 
 def test_transcribes_with_the_language_and_default_model(host):
     stt = plugin.WhisperBrowserSTT({})
-    assert stt.execute(audio(), "da-DK") == "Hvad er klokken?"
-    assert host.calls[-1] == ("transcribe", 32000, 16000, "da", plugin.DEFAULT_MODEL)
+    assert stt.execute(audio(), "nl-NL") == "Hvad er klokken?"
+    assert host.calls[-1] == ("transcribe", 32000, 16000, "nl", plugin.DEFAULT_MODEL)
+
+
+def test_a_language_with_its_own_model(host):
+    plugin.WhisperBrowserSTT({}).execute(audio(), "en-US")
+    assert host.calls[-1][-1] == plugin.MODELS["en"]
 
 
 def test_the_model_comes_from_config(host):

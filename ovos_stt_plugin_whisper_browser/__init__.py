@@ -7,12 +7,13 @@ web/whisper.js, transformers.js on onnxruntime-web, in the same Web Worker
 as OVOS) and gets the text back. The audio never leaves the device; only
 the model is downloaded, once, the first time it is used.
 
-Chosen like any STT plugin (`stt.module`). Config:
+Chosen like any STT plugin (`stt.module`). The model follows the language,
+as ovos-tts-plugin-piper's voice does: MODELS has the best one that runs in
+a browser for each language that has its own, and every other language
+gets the multilingual DEFAULT_MODEL. Config:
 
-- `model`: a Whisper model on Hugging Face in ONNX for transformers.js,
-  default "onnx-community/whisper-base" (multilingual, ~77 MB at 8 bit);
-  "onnx-community/whisper-tiny" is half that and faster, less accurate;
-  "onnx-community/whisper-small" (~250 MB) more accurate, slower.
+- `model`: one Whisper model (Hugging Face, ONNX for transformers.js) for
+  every language, instead of MODELS.
 
 Until the model has downloaded, the plugin raises, and the host uses
 `stt.fallback_module` meanwhile (Emkay does, as ovos-dinkum-listener does).
@@ -26,7 +27,18 @@ from ovos_plugin_manager.templates.stt import STT
 from ovos_utils import classproperty
 
 PLUGIN = "ovos-stt-plugin-whisper-browser"
+#: multilingual; for the languages not in MODELS (~140 MB)
 DEFAULT_MODEL = "onnx-community/whisper-base"
+
+#: a language's own model where one does better than the multilingual one.
+#: English: OpenAI's English-only Whisper, better and faster at the same size.
+MODELS = {
+    "en": "onnx-community/whisper-base.en",
+}
+
+
+def model_for(lang: str) -> str:
+    return MODELS.get((lang or "en").split("-")[0].lower(), DEFAULT_MODEL)
 
 #: the languages Whisper was trained on (its tokenizer's language tokens)
 LANGUAGES = {
@@ -46,7 +58,7 @@ class WhisperBrowserSTT(STT):
 
     def __init__(self, config=None):
         super().__init__(config)
-        self.model = self.config.get("model") or DEFAULT_MODEL
+        self.model = self.config.get("model")   # None: by language (MODELS)
 
     def execute(self, audio, language=None):
         import js
@@ -54,11 +66,12 @@ class WhisperBrowserSTT(STT):
         lang = (language or self.lang or "en").split("-")[0].lower()
         if lang not in LANGUAGES:
             raise ValueError(f"Whisper does not know the language {language}")
-        if not run_sync(js.emkayWhisper.ready(self.model)):
+        model = self.model or model_for(lang)
+        if not run_sync(js.emkayWhisper.ready(model)):
             # loading now; the host's stt.fallback_module hears this one
-            raise RuntimeError(f"the Whisper model {self.model} is still downloading")
+            raise RuntimeError(f"the Whisper model {model} is still downloading")
         pcm = audio.get_raw_data(convert_rate=None, convert_width=2)
-        text = run_sync(js.emkayWhisper.transcribe(to_js(pcm), audio.sample_rate, lang, self.model))
+        text = run_sync(js.emkayWhisper.transcribe(to_js(pcm), audio.sample_rate, lang, model))
         return str(text or "").strip()
 
     @classproperty

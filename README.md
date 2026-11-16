@@ -42,18 +42,24 @@ emkayWhisper.transcribe(pcm16, rate, lang, model) // Promise<string>
   "stt": {
     "module": "ovos-stt-plugin-whisper-browser",
     "fallback_module": "ovos-stt-plugin-server",
-    "ovos-stt-plugin-whisper-browser": {"model": "onnx-community/whisper-base"}
+    "ovos-stt-plugin-whisper-browser": {}
   }
 }
 ```
 
-`model` is any Whisper model in ONNX for transformers.js:
+The model follows the language, as Piper's voice does: a language with a
+model of its own that does better uses that one (`MODELS`), every other
+language the multilingual `onnx-community/whisper-base`.
 
-| model | download | notes |
+| language | model | download |
 |---|---|---|
-| `onnx-community/whisper-tiny` | ~65 MB | fastest; fine for English |
-| `onnx-community/whisper-base` | ~140 MB | default; good English, Danish so-so |
-| `onnx-community/whisper-small` | ~510 MB | better for languages other than English, slower |
+| English | `onnx-community/whisper-base.en` (English-only: better and faster) | ~140 MB |
+| others | `onnx-community/whisper-base` | ~140 MB |
+
+`model` in the config sets one model for every language instead, any
+Whisper model in ONNX for transformers.js, for instance
+`onnx-community/whisper-tiny` (~65 MB, faster, less accurate) or
+`onnx-community/whisper-small` (~510 MB, more accurate, slow without WebGPU).
 
 (The encoder is kept at full precision, since it loses too much at 8 bit;
 the decoder is 8-bit.)
