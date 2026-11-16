@@ -1,0 +1,38 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ovos-stt-plugin-whisper-browser"
+version = "0.1.0a1"
+description = "OpenVoiceOS STT plugin: Whisper speech recognition on the device, in the browser (transformers.js, WebAssembly/WebGPU)"
+readme = "README.md"
+license = {text = "Apache-2.0"}
+authors = [{name = "Andreas Lorensen"}]
+requires-python = ">=3.10"
+keywords = ["ovos", "openvoiceos", "plugin", "stt", "speech-to-text", "whisper", "offline", "privacy", "webassembly", "pyodide", "emkay"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "License :: OSI Approved :: Apache Software License",
+    "Programming Language :: Python :: 3",
+    "Environment :: WebAssembly :: Emscripten",
+    "Topic :: Multimedia :: Sound/Audio :: Speech",
+]
+dependencies = [
+    "ovos-plugin-manager>=0.0.26",
+    "ovos-utils>=0.0.38",
+]
+
+[project.optional-dependencies]
+test = ["pytest"]
+
+[project.urls]
+Homepage = "https://github.com/emkay-voice/ovos-stt-plugin-whisper-browser"
+Issues = "https://github.com/emkay-voice/ovos-stt-plugin-whisper-browser/issues"
+Emkay = "https://github.com/emkay-voice/emkay"
+
+[project.entry-points."opm.stt"]
+ovos-stt-plugin-whisper-browser = "ovos_stt_plugin_whisper_browser:WhisperBrowserSTT"
+
+[tool.setuptools]
+packages = ["ovos_stt_plugin_whisper_browser"]
