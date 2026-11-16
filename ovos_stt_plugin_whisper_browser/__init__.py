@@ -10,10 +10,12 @@ the model is downloaded, once, the first time it is used.
 Chosen like any STT plugin (`stt.module`). The model follows the language,
 as ovos-tts-plugin-piper's voice does: MODELS has the best one that runs in
 a browser for each language that has its own, and every other language
-gets the multilingual DEFAULT_MODEL. Config:
+gets the multilingual DEFAULT_MODEL. A language's own model may be another
+kind than Whisper (Danish: a wav2vec2 model); the host runs any speech
+recognition model transformers.js runs. Config:
 
-- `model`: one Whisper model (Hugging Face, ONNX for transformers.js) for
-  every language, instead of MODELS.
+- `model`: one model (Hugging Face, ONNX for transformers.js) for every
+  language, instead of MODELS.
 
 Until the model has downloaded, the plugin raises, and the host uses
 `stt.fallback_module` meanwhile (Emkay does, as ovos-dinkum-listener does).
@@ -32,8 +34,13 @@ DEFAULT_MODEL = "onnx-community/whisper-base"
 
 #: a language's own model where one does better than the multilingual one.
 #: English: OpenAI's English-only Whisper, better and faster at the same size.
+#: Danish: Røst (CoRal), a wav2vec2 model trained on Danish speech; Whisper
+#: base gets about two words in three wrong in Danish, Røst about one in five,
+#: and it is faster. Why and how it was chosen, and how to add a language:
+#: https://github.com/emkay-voice/stt-models
 MODELS = {
     "en": "onnx-community/whisper-base.en",
+    "da": "emkay-voice/roest-wav2vec2-315m-onnx",
 }
 
 

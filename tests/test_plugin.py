@@ -49,6 +49,11 @@ def test_a_language_with_its_own_model(host):
     assert host.calls[-1][-1] == plugin.MODELS["en"]
 
 
+def test_danish_uses_its_national_model(host):
+    plugin.WhisperBrowserSTT({}).execute(audio(), "da-DK")
+    assert host.calls[-1][-1] == plugin.MODELS["da"] == "emkay-voice/roest-wav2vec2-315m-onnx"
+
+
 def test_the_model_comes_from_config(host):
     stt = plugin.WhisperBrowserSTT({"model": "onnx-community/whisper-tiny"})
     stt.execute(audio(), "en-US")

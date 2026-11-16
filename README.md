@@ -54,10 +54,23 @@ language the multilingual `onnx-community/whisper-base`.
 | language | model | download |
 |---|---|---|
 | English | `onnx-community/whisper-base.en` (English-only: better and faster) | ~140 MB |
+| Danish | `emkay-voice/roest-wav2vec2-315m-onnx` ([Røst](https://huggingface.co/CoRal-project/roest-v3-wav2vec2-315m) from CoRal, trained on Danish speech) | ~320 MB |
 | others | `onnx-community/whisper-base` | ~140 MB |
 
+Whisper learned the big languages from tens of thousands of hours each, but
+a small language from a few hundred, and a model small enough for a phone
+does not learn a language well from that: whisper-base gets about two
+Danish words in three wrong. Many countries have trained models of their
+own on national data, and those can do much better. Danish uses Røst, which
+is not Whisper but a wav2vec2 model; the host runs it the same way. The
+tests behind the choice, and how to add a language with a national model,
+are in [emkay-voice/stt-models](https://github.com/emkay-voice/stt-models).
+
+Røst's license (adapted from OpenRAIL-M) allows commercial use but forbids
+using it for speech synthesis and biometric identification.
+
 `model` in the config sets one model for every language instead, any
-Whisper model in ONNX for transformers.js, for instance
+speech recognition model in ONNX for transformers.js, for instance
 `onnx-community/whisper-tiny` (~65 MB, faster, less accurate) or
 `onnx-community/whisper-small` (~510 MB, more accurate, slow without WebGPU).
 
