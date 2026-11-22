@@ -4,11 +4,12 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "ovos-stt-plugin-whisper-browser"
-version = "0.1.0a4"
+version = "0.1.0a5"
 description = "OpenVoiceOS STT plugin: Whisper speech recognition on the device, in the browser (transformers.js, WebAssembly/WebGPU)"
 readme = "README.md"
 license = {text = "Apache-2.0"}
 authors = [{name = "emkay-voice"}]
+maintainers = [{name = "Andreas Lorensen"}]
 requires-python = ">=3.10"
 keywords = ["ovos", "openvoiceos", "plugin", "stt", "speech-to-text", "whisper", "offline", "privacy", "webassembly", "pyodide", "emkay"]
 classifiers = [
