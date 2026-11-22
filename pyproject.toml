@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "ovos-stt-plugin-whisper-browser"
-version = "0.1.0a5"
+version = "0.1.0a6"
 description = "OpenVoiceOS STT plugin: Whisper speech recognition on the device, in the browser (transformers.js, WebAssembly/WebGPU)"
 readme = "README.md"
 license = {text = "Apache-2.0"}
@@ -37,3 +37,7 @@ ovos-stt-plugin-whisper-browser = "ovos_stt_plugin_whisper_browser:WhisperBrowse
 
 [tool.setuptools]
 packages = ["ovos_stt_plugin_whisper_browser"]
+
+# controlpanel.json is the plugin's page in ovos-control-panel
+[tool.setuptools.package-data]
+ovos_stt_plugin_whisper_browser = ["controlpanel.json", "locale/*/controlpanel.json"]

@@ -1,0 +1,8 @@
+{
+ "whisperbrowser.title": "Whisper-herkenning",
+ "whisperbrowser.intro": "Spraakherkenning op het apparaat, in de browser. Het model wordt één keer gedownload; wat je zegt verlaat nooit het apparaat.",
+ "whisperbrowser.model": "Model",
+ "whisperbrowser.model.hint": "Een spraakherkenningsmodel in ONNX voor transformers.js. Leeg: het beste voor elke taal.",
+ "whisperbrowser.wait.hint": "Uit: tot het model gedownload is, luistert de reserve. Aan: hij wacht, voor een apparaat zonder netwerk om op terug te vallen.",
+ "whisperbrowser.wait": "Wachten op de download"
+}

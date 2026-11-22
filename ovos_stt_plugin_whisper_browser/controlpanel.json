@@ -1,0 +1,40 @@
+{
+ "controlpanel": 1,
+ "id": "whisper-browser",
+ "title": "whisperbrowser.title",
+ "group": "voice",
+ "order": 50,
+ "bus": "ovos.whisper-browser.",
+ "blocks": [
+  {
+   "type": "text",
+   "text": "whisperbrowser.intro"
+  },
+  {
+   "type": "module",
+   "kind": "stt"
+  },
+  {
+   "type": "form",
+   "save": {
+    "config": "stt.ovos-stt-plugin-whisper-browser"
+   },
+   "fields": [
+    {
+     "name": "model",
+     "label": "whisperbrowser.model",
+     "type": "text",
+     "hint": "whisperbrowser.model.hint",
+     "max_length": 200
+    },
+    {
+     "name": "wait_for_download",
+     "label": "whisperbrowser.wait",
+     "type": "checkbox",
+     "hint": "whisperbrowser.wait.hint",
+     "default": false
+    }
+   ]
+  }
+ ]
+}

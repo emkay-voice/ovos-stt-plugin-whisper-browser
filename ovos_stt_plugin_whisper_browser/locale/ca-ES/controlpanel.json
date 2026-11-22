@@ -1,0 +1,8 @@
+{
+ "whisperbrowser.title": "Escolta Whisper",
+ "whisperbrowser.intro": "Reconeixement de veu al dispositiu, al navegador. El model es baixa un cop; el que dieu no surt mai del dispositiu.",
+ "whisperbrowser.model": "Model",
+ "whisperbrowser.model.hint": "Un model de reconeixement de veu en ONNX per a transformers.js. Buit: el millor per a cada llengua.",
+ "whisperbrowser.wait.hint": "Desactivat: fins que el model s'hagi baixat, escolta el de reserva. Activat: espera, per a un dispositiu sense xarxa de reserva.",
+ "whisperbrowser.wait": "Esperar la baixada"
+}
