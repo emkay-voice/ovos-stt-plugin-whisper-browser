@@ -1,0 +1,8 @@
+{
+ "whisperbrowser.title": "Escoita Whisper",
+ "whisperbrowser.intro": "Recoñecemento de voz no dispositivo, no navegador. O modelo descárgase unha vez; o que dis nunca sae do dispositivo.",
+ "whisperbrowser.model": "Modelo",
+ "whisperbrowser.model.hint": "Un modelo de recoñecemento de voz en ONNX para transformers.js. Baleiro: o mellor para cada lingua.",
+ "whisperbrowser.wait.hint": "Desactivado: ata que o modelo se descargue, escoita o de reserva. Activado: agarda, para un dispositivo sen rede de reserva.",
+ "whisperbrowser.wait": "Agardar a descarga"
+}

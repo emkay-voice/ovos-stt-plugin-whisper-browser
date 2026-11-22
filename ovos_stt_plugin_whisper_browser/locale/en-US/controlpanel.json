@@ -1,0 +1,8 @@
+{
+ "whisperbrowser.title": "Whisper listening",
+ "whisperbrowser.intro": "Speech recognition on the device, in the browser. The model downloads once; what you say never leaves the device.",
+ "whisperbrowser.model": "Model",
+ "whisperbrowser.model.hint": "A speech recognition model in ONNX for transformers.js. Empty: the best one for each language.",
+ "whisperbrowser.wait.hint": "Off: until the model has downloaded, the fallback listener hears you. On: it waits, for a device with no network to fall back on.",
+ "whisperbrowser.wait": "Wait for the download"
+}

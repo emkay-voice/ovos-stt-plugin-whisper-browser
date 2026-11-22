@@ -85,6 +85,10 @@ the decoder is 8-bit.)
 On a phone without WebGPU, expect a few seconds per sentence with tiny or
 base. Whisper knows about 100 languages; `available_languages` lists them.
 
+In the [control panel](https://github.com/OpenVoiceOS/ovos-control-panel) the plugin has a page under Voice: the model and
+`wait_for_download`, saved in the section above, and whether it is the
+listener in use (`controlpanel.json`).
+
 ## License
 
 Apache-2.0

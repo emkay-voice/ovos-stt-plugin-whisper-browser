@@ -1,0 +1,8 @@
+{
+ "whisperbrowser.title": "Whisper-lytning",
+ "whisperbrowser.intro": "Talegenkendelse på enheden, i browseren. Modellen hentes én gang; det, du siger, forlader aldrig enheden.",
+ "whisperbrowser.model": "Model",
+ "whisperbrowser.model.hint": "En talegenkendelsesmodel i ONNX til transformers.js. Tom: den bedste til hvert sprog.",
+ "whisperbrowser.wait.hint": "Fra: indtil modellen er hentet, lytter reserven. Til: den venter, til en enhed uden netværk at falde tilbage på.",
+ "whisperbrowser.wait": "Vent på downloaden"
+}
