@@ -1,5 +1,5 @@
 {
- "whisperbrowser.title": "Whisper entzumena",
+ "whisperbrowser.title": "Whisper entzumena nabigatzailean",
  "whisperbrowser.intro": "Ahots-ezagutza gailuan, nabigatzailean. Eredua behin deskargatzen da; esaten duzuna ez da inoiz gailutik ateratzen.",
  "whisperbrowser.model": "Eredua",
  "whisperbrowser.model.hint": "Ahots-ezagutzako eredu bat ONNXen transformers.js-rako. Hutsik: hizkuntza bakoitzerako onena.",

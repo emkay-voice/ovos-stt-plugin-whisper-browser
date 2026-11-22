@@ -1,5 +1,5 @@
 {
- "whisperbrowser.title": "Whisper listening",
+ "whisperbrowser.title": "Whisper listening in the browser",
  "whisperbrowser.intro": "Speech recognition on the device, in the browser. The model downloads once; what you say never leaves the device.",
  "whisperbrowser.model": "Model",
  "whisperbrowser.model.hint": "A speech recognition model in ONNX for transformers.js. Empty: the best one for each language.",

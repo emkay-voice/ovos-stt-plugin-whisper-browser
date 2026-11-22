@@ -1,5 +1,5 @@
 {
- "whisperbrowser.title": "Escoita Whisper",
+ "whisperbrowser.title": "Escoita Whisper no navegador",
  "whisperbrowser.intro": "Recoñecemento de voz no dispositivo, no navegador. O modelo descárgase unha vez; o que dis nunca sae do dispositivo.",
  "whisperbrowser.model": "Modelo",
  "whisperbrowser.model.hint": "Un modelo de recoñecemento de voz en ONNX para transformers.js. Baleiro: o mellor para cada lingua.",

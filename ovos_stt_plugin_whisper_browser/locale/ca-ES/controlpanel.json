@@ -1,5 +1,5 @@
 {
- "whisperbrowser.title": "Escolta Whisper",
+ "whisperbrowser.title": "Escolta Whisper al navegador",
  "whisperbrowser.intro": "Reconeixement de veu al dispositiu, al navegador. El model es baixa un cop; el que dieu no surt mai del dispositiu.",
  "whisperbrowser.model": "Model",
  "whisperbrowser.model.hint": "Un model de reconeixement de veu en ONNX per a transformers.js. Buit: el millor per a cada llengua.",

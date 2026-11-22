@@ -1,5 +1,5 @@
 {
- "whisperbrowser.title": "Écoute Whisper",
+ "whisperbrowser.title": "Écoute Whisper dans le navigateur",
  "whisperbrowser.intro": "Reconnaissance vocale sur l'appareil, dans le navigateur. Le modèle se télécharge une fois ; ce que vous dites ne quitte jamais l'appareil.",
  "whisperbrowser.model": "Modèle",
  "whisperbrowser.model.hint": "Un modèle de reconnaissance vocale en ONNX pour transformers.js. Vide : le meilleur pour chaque langue.",

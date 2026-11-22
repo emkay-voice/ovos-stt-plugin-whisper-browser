@@ -1,5 +1,5 @@
 {
- "whisperbrowser.title": "Whisper-Erkennung",
+ "whisperbrowser.title": "Whisper-Erkennung im Browser",
  "whisperbrowser.intro": "Spracherkennung auf dem Gerät, im Browser. Das Modell wird einmal geladen; was Sie sagen, verlässt nie das Gerät.",
  "whisperbrowser.model": "Modell",
  "whisperbrowser.model.hint": "Ein Spracherkennungsmodell in ONNX für transformers.js. Leer: das beste für jede Sprache.",
