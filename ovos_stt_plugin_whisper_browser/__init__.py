@@ -16,6 +16,9 @@ recognition model transformers.js runs. Config:
 
 - `model`: one model (Hugging Face, ONNX for transformers.js) for every
   language, instead of MODELS.
+- `light`: a device with little memory; a language with a light model
+  (LIGHT_MODELS) uses that one instead. The host decides (Emkay: from the
+  device's memory), and the user can change it.
 
 Until the model has downloaded, the plugin raises, and the host uses
 `stt.fallback_module` meanwhile (Emkay does, as ovos-dinkum-listener does).
@@ -44,8 +47,20 @@ MODELS = {
 }
 
 
-def model_for(lang: str) -> str:
-    return MODELS.get((lang or "en").split("-")[0].lower(), DEFAULT_MODEL)
+#: a smaller model for devices with little memory, where a language's own
+#: one is too big to open there. Danish: Røst (~320 MB) closed the tab on a
+#: tablet with 4 GB; Alvenir's wav2vec2 base, trained on Danish (NST), is
+#: ~95 MB and close to Røst on commands (stt-models, docs/danish.md).
+LIGHT_MODELS = {
+    "da": "emkay-voice/alvenir-wav2vec2-base-da-onnx",
+}
+
+
+def model_for(lang: str, light: bool = False) -> str:
+    lang = (lang or "en").split("-")[0].lower()
+    if light and lang in LIGHT_MODELS:
+        return LIGHT_MODELS[lang]
+    return MODELS.get(lang, DEFAULT_MODEL)
 
 #: the languages Whisper was trained on (its tokenizer's language tokens)
 LANGUAGES = {
@@ -73,7 +88,7 @@ class WhisperBrowserSTT(STT):
         lang = (language or self.lang or "en").split("-")[0].lower()
         if lang not in LANGUAGES:
             raise ValueError(f"Whisper does not know the language {language}")
-        model = self.model or model_for(lang)
+        model = self.model or model_for(lang, bool(self.config.get("light")))
         if not run_sync(js.emkayWhisper.ready(model)) and not self.config.get("wait_for_download"):
             # loading now; the host's stt.fallback_module hears this one.
             # With "wait_for_download" (no network to fall back on, e.g.

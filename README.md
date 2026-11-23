@@ -74,6 +74,22 @@ are in [emkay-voice/stt-models](https://github.com/emkay-voice/stt-models).
 Røst's license (adapted from OpenRAIL-M) allows commercial use but forbids
 using it for speech synthesis and biometric identification.
 
+### Light models
+
+A big model can be too much for a device with little memory: Røst closed
+the tab on a tablet with 4 GB. With `"light": true` a language that has a
+smaller model uses that one instead (`LIGHT_MODELS`); the others keep
+theirs. The host decides for the device (Emkay: from the memory the
+browser reports), and the user can change it.
+
+| language | light model | download |
+|---|---|---|
+| Danish | `emkay-voice/alvenir-wav2vec2-base-da-onnx` ([Alvenir's wav2vec2 base](https://huggingface.co/Alvenir/wav2vec2-base-da-ft-nst), trained on Danish speech, Apache-2.0) | ~95 MB |
+
+On Danish commands it gets 34.5% of the words wrong, Røst 29.3% and
+whisper-base 62.1%, at a third of Røst's memory
+([stt-models](https://github.com/emkay-voice/stt-models/blob/main/docs/danish.md#a-light-model)).
+
 `model` in the config sets one model for every language instead, any
 speech recognition model in ONNX for transformers.js, for instance
 `onnx-community/whisper-tiny` (~65 MB, faster, less accurate) or
@@ -85,7 +101,7 @@ the decoder is 8-bit.)
 On a phone without WebGPU, expect a few seconds per sentence with tiny or
 base. Whisper knows about 100 languages; `available_languages` lists them.
 
-In the [control panel](https://github.com/OpenVoiceOS/ovos-control-panel) the plugin has a page under Voice: the model and
+In the [control panel](https://github.com/OpenVoiceOS/ovos-control-panel) the plugin has a page under Voice: the model, `light` and
 `wait_for_download`, saved in the section above, and whether it is the
 listener in use (`controlpanel.json`).
 

@@ -4,5 +4,7 @@
  "whisperbrowser.model": "Modelo",
  "whisperbrowser.model.hint": "Un modelo de reconocimiento de voz en ONNX para transformers.js. Vacío: el mejor para cada idioma.",
  "whisperbrowser.wait.hint": "Desactivado: hasta que el modelo se descargue, escucha el de reserva. Activado: espera, para un dispositivo sin red de reserva.",
- "whisperbrowser.wait": "Esperar a la descarga"
+ "whisperbrowser.wait": "Esperar a la descarga",
+ "whisperbrowser.light": "Modelo ligero",
+ "whisperbrowser.light.hint": "Para un dispositivo con poca memoria: un modelo más pequeño si el idioma tiene uno (danés: 95 MB en lugar de 320 MB), algo menos preciso."
 }

@@ -4,5 +4,7 @@
  "whisperbrowser.model": "Eredua",
  "whisperbrowser.model.hint": "Ahots-ezagutzako eredu bat ONNXen transformers.js-rako. Hutsik: hizkuntza bakoitzerako onena.",
  "whisperbrowser.wait.hint": "Itzalita: eredua deskargatu arte, ordezkoak entzuten zaitu. Piztuta: itxaron egiten du, ordezko sarerik gabeko gailuetarako.",
- "whisperbrowser.wait": "Deskarga itxaron"
+ "whisperbrowser.wait": "Deskarga itxaron",
+ "whisperbrowser.light": "Eredu arina",
+ "whisperbrowser.light.hint": "Memoria gutxiko gailu baterako: eredu txikiagoa, hizkuntzak baldin badu (daniera: 95 MB 320 MB-en ordez), zehaztasun pixka bat gutxiagorekin."
 }

@@ -28,6 +28,13 @@
      "max_length": 200
     },
     {
+     "name": "light",
+     "label": "whisperbrowser.light",
+     "type": "checkbox",
+     "hint": "whisperbrowser.light.hint",
+     "default": false
+    },
+    {
      "name": "wait_for_download",
      "label": "whisperbrowser.wait",
      "type": "checkbox",

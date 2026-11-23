@@ -4,5 +4,7 @@
  "whisperbrowser.model": "Model",
  "whisperbrowser.model.hint": "En talegenkendelsesmodel i ONNX til transformers.js. Tom: den bedste til hvert sprog.",
  "whisperbrowser.wait.hint": "Fra: indtil modellen er hentet, lytter reserven. Til: den venter, til en enhed uden netværk at falde tilbage på.",
- "whisperbrowser.wait": "Vent på downloaden"
+ "whisperbrowser.wait": "Vent på downloaden",
+ "whisperbrowser.light": "Let model",
+ "whisperbrowser.light.hint": "Til en enhed med lidt hukommelse: en mindre model, hvor sproget har én (dansk: 95 MB i stedet for 320 MB), lidt mindre præcis."
 }

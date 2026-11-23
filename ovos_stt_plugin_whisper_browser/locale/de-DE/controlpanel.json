@@ -4,5 +4,7 @@
  "whisperbrowser.model": "Modell",
  "whisperbrowser.model.hint": "Ein Spracherkennungsmodell in ONNX für transformers.js. Leer: das beste für jede Sprache.",
  "whisperbrowser.wait.hint": "Aus: bis das Modell geladen ist, hört die Ersatzerkennung zu. An: es wartet, für ein Gerät ohne Netz als Rückfall.",
- "whisperbrowser.wait": "Auf den Download warten"
+ "whisperbrowser.wait": "Auf den Download warten",
+ "whisperbrowser.light": "Leichtes Modell",
+ "whisperbrowser.light.hint": "Für ein Gerät mit wenig Speicher: ein kleineres Modell, wo die Sprache eines hat (Dänisch: 95 MB statt 320 MB), etwas weniger genau."
 }
