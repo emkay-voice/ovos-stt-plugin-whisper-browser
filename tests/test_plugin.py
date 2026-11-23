@@ -54,6 +54,29 @@ def test_danish_uses_its_national_model(host):
     assert host.calls[-1][-1] == plugin.MODELS["da"] == "emkay-voice/roest-wav2vec2-315m-onnx"
 
 
+def test_light_danish_uses_its_light_model(host):
+    plugin.WhisperBrowserSTT({"light": True}).execute(audio(), "da-DK")
+    assert host.calls[-1][-1] == plugin.LIGHT_MODELS["da"] == "emkay-voice/alvenir-wav2vec2-base-da-onnx"
+
+
+def test_light_without_a_light_model_keeps_the_language_model(host):
+    plugin.WhisperBrowserSTT({"light": True}).execute(audio(), "en-US")
+    assert host.calls[-1][-1] == plugin.MODELS["en"]
+    plugin.WhisperBrowserSTT({"light": True}).execute(audio(), "nl-NL")
+    assert host.calls[-1][-1] == plugin.DEFAULT_MODEL
+
+
+def test_model_in_config_wins_over_light(host):
+    plugin.WhisperBrowserSTT({"light": True, "model": "onnx-community/whisper-tiny"}).execute(audio(), "da-DK")
+    assert host.calls[-1][-1] == "onnx-community/whisper-tiny"
+
+
+def test_model_for():
+    assert plugin.model_for("da-DK") == plugin.MODELS["da"]
+    assert plugin.model_for("da-DK", light=True) == plugin.LIGHT_MODELS["da"]
+    assert plugin.model_for("en", light=True) == plugin.MODELS["en"]
+
+
 def test_the_model_comes_from_config(host):
     stt = plugin.WhisperBrowserSTT({"model": "onnx-community/whisper-tiny"})
     stt.execute(audio(), "en-US")

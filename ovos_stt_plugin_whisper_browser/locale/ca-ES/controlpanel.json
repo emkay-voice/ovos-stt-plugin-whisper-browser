@@ -4,5 +4,7 @@
  "whisperbrowser.model": "Model",
  "whisperbrowser.model.hint": "Un model de reconeixement de veu en ONNX per a transformers.js. Buit: el millor per a cada llengua.",
  "whisperbrowser.wait.hint": "Desactivat: fins que el model s'hagi baixat, escolta el de reserva. Activat: espera, per a un dispositiu sense xarxa de reserva.",
- "whisperbrowser.wait": "Esperar la baixada"
+ "whisperbrowser.wait": "Esperar la baixada",
+ "whisperbrowser.light": "Model lleuger",
+ "whisperbrowser.light.hint": "Per a un dispositiu amb poca memòria: un model més petit si la llengua en té un (danès: 95 MB en lloc de 320 MB), una mica menys precís."
 }
